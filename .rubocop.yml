@@ -13,6 +13,7 @@ Lint/StructNewOverride:
 Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
+    - '*.gemspec'
     - 'spec/**/*.rb'
 
 Style/ExponentialNotation:
