@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '37'
+      Date:
+      - Tue, 05 May 2020 19:22:42 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"Xskeunk8J918PlEX"}}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 19:22:43 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=Xskeunk8J918PlEX
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '28'
+      Date:
+      - Tue, 05 May 2020 19:22:42 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"isLogin":false}}'
+    http_version: null
+  recorded_at: Tue, 05 May 2020 19:22:43 GMT
+recorded_with: VCR 5.1.0
