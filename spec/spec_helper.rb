@@ -5,6 +5,9 @@ require 'byebug'
 require 'vcr'
 require 'sma_api'
 
+ENV['SMA_API_HOST'] ||= '192.168.0.1'
+ENV['SMA_API_WEB_PASSWORD'] ||= 'some_password'
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
