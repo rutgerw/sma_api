@@ -49,7 +49,7 @@ RSpec.describe SmaApi::Http do
   end
 
   describe '#destroy_session', :vcr do
-    subject { client.token }
+    subject { client.sid }
 
     before { client.destroy_session }
 

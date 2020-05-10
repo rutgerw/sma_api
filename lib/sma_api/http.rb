@@ -1,13 +1,14 @@
 require 'json'
+require 'net/http'
 
 module SmaApi
   class Http
-    attr_accessor :token
+    attr_accessor :sid
 
     def initialize(host:, password:)
       @host = host
       @password = password
-      @token = ''
+      @sid = ''
     end
 
     def post(url, payload = {})
@@ -22,27 +23,28 @@ module SmaApi
 
       raise SmaApi::Error.new "Creating session failed" unless result['sid']
 
-      @token = result['sid']
+      @sid = result['sid']
     end
 
     def destroy_session
       with_valid_user('/dyn/logout.json', {})
 
-      @token = ''
+      @sid = ''
     end
 
     private
 
     def with_valid_user(url, payload)
-      create_session if @token.empty?
+      create_session if @sid.empty?
 
-      url_token = url + "?sid=#{@token}"
-      response = JSON.parse(http.post(url_token, payload.to_json).body)
+      url_with_sid = url + "?sid=#{@sid}"
+
+      response = JSON.parse(http.post(url_with_sid, payload.to_json).body)
 
       return response unless response.key? 'err'
 
       if response['err'] == 401
-        login
+        create_session
         with_valid_user(url, payload)
       else
         raise SmaApi::Error.new "Error #{response['err']} during request"
