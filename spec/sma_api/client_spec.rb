@@ -28,12 +28,22 @@ RSpec.describe SmaApi::Client do
     let(:result) do
       {
         '6100_40263F00' => 865,
-        '6400_00260100' => 836990
+        '6400_00260100' => 836_990
       }
     end
 
     subject { client.get_values keys }
 
     it { is_expected.to eq(result) }
+  end
+
+  describe '#object_metadata', :vcr do
+    let(:first_result) do
+      %w[Prio TagId TagIdEvtMsg]
+    end
+
+    subject { client.object_metadata.first[1].keys }
+
+    it { is_expected.to include(*first_result) }
   end
 end

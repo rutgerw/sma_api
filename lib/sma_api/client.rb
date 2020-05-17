@@ -13,16 +13,19 @@ module SmaApi
       result = @client.post('/dyn/getValues.json', { destDev: [], keys: keys })
       return nil unless result['result']
 
-      keys.inject({}) do |h,k|
+      keys.each_with_object({}) do |k, h|
         h[k] = scalar_value(result['result'].first[1][k])
-        h
       end
+    end
+
+    def object_metadata
+      @client.post('/data/ObjectMetadata_Istl.json')
     end
 
     private
 
-    def scalar_value(v)
-      v['1'].first['val']
+    def scalar_value(value)
+      value['1'].first['val']
     end
   end
 end
