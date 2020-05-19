@@ -21,6 +21,20 @@ RSpec.describe SmaApi::Client do
         it { is_expected.to raise_error ArgumentError }
       end
     end
+
+    context 'optional parameters', :vcr do
+      describe 'sid' do
+        let(:sid) { 'some session id' }
+
+        subject { described_class.new host: host, password: password, sid: sid }
+
+        it 'passes sid to http client' do
+          expect(SmaApi::Http).to receive(:new).with(host: host, password: password, sid: sid)
+
+          subject
+        end
+      end
+    end
   end
 
   describe '#get_values', :vcr do

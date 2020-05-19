@@ -3,10 +3,10 @@
 module SmaApi
   # Client for reading SMA Inverter
   class Client
-    def initialize(host:, password:)
+    def initialize(host:, password:, sid: nil)
       @host = host
       @password = password
-      @client = Http.new(host: host, password: password)
+      @client = Http.new(host: host, password: password, sid: sid)
     end
 
     def get_values(keys)
