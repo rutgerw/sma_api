@@ -24,6 +24,24 @@ RSpec.describe SmaApi::Http do
         it { is_expected.to raise_error(ArgumentError) }
       end
     end
+
+    context 'optional parameters', :vcr do
+      describe 'sid' do
+        let(:sid) do
+          client = described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'])
+          client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
+
+          client.sid
+        end
+
+        it 'uses sid in initialize' do
+          client = described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'], sid: sid)
+          client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
+
+          expect(client.sid).to eq(sid)
+        end
+      end
+    end
   end
 
   describe '#create_session', :vcr do

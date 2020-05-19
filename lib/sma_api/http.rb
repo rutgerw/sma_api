@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'net/http'
 
@@ -5,10 +7,10 @@ module SmaApi
   class Http
     attr_accessor :sid
 
-    def initialize(host:, password:)
+    def initialize(host:, password:, sid: nil)
       @host = host
       @password = password
-      @sid = ''
+      @sid = sid || ''
     end
 
     def post(url, payload = {})
@@ -19,9 +21,9 @@ module SmaApi
       payload = {
         right: 'usr', pass: @password
       }
-      result = JSON.parse(http.post('/dyn/login.json', payload.to_json).body).fetch('result',{})
+      result = JSON.parse(http.post('/dyn/login.json', payload.to_json).body).fetch('result', {})
 
-      raise SmaApi::Error.new "Creating session failed" unless result['sid']
+      raise SmaApi::Error, 'Creating session failed' unless result['sid']
 
       @sid = result['sid']
     end
@@ -47,7 +49,7 @@ module SmaApi
         create_session
         with_valid_user(url, payload)
       else
-        raise SmaApi::Error.new "Error #{response['err']} during request"
+        raise SmaApi::Error, "Error #{response['err']} during request"
       end
     end
 
