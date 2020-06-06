@@ -37,6 +37,12 @@ RSpec.describe SmaApi::Client do
     end
   end
 
+  describe '#sid', :vcr do
+    subject { client.sid }
+
+    it { is_expected.to match(/\w{16}/) }
+  end
+
   describe '#get_values', :vcr do
     let(:keys) { %w[6100_40263F00 6400_00260100] }
     let(:result) do
