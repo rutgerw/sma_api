@@ -13,6 +13,10 @@ module SmaApi
       @client.sid
     end
 
+    def destroy_session
+      @client.destroy_session
+    end
+
     def get_values(keys)
       result = @client.post('/dyn/getValues.json', { destDev: [], keys: keys })
       return nil unless result['result']

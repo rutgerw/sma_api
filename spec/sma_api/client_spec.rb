@@ -43,6 +43,16 @@ RSpec.describe SmaApi::Client do
     it { is_expected.to match(/\w{16}/) }
   end
 
+  describe '#destroy_session', :vcr do
+    let!(:sid) { client.sid }
+
+    subject { client.sid }
+
+    before { client.destroy_session }
+
+    it { is_expected.not_to eq(sid) }
+  end
+
   describe '#get_values', :vcr do
     let(:keys) { %w[6100_40263F00 6400_00260100] }
     let(:result) do
