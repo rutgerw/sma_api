@@ -9,6 +9,10 @@ module SmaApi
       @client = Http.new(host: host, password: password, sid: sid)
     end
 
+    def sid
+      @client.sid
+    end
+
     def get_values(keys)
       result = @client.post('/dyn/getValues.json', { destDev: [], keys: keys })
       return nil unless result['result']

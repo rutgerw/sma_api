@@ -4,9 +4,8 @@ require 'json'
 require 'net/http'
 
 module SmaApi
+  # Http wrapper
   class Http
-    attr_accessor :sid
-
     def initialize(host:, password:, sid: nil)
       @host = host
       @password = password
@@ -26,6 +25,12 @@ module SmaApi
       raise SmaApi::Error, 'Creating session failed' unless result['sid']
 
       @sid = result['sid']
+    end
+
+    def sid
+      create_session if @sid.empty?
+
+      @sid
     end
 
     def destroy_session
