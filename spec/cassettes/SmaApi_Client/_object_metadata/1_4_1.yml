@@ -25,17 +25,17 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Sat, 16 May 2020 12:41:45 GMT
+      - Sat, 06 Jun 2020 12:44:25 GMT
       Server:
       - lighttpd/1.4.48
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"LGCEfVdNoCONqX94"}}'
+      string: '{"result":{"sid":"kRbh7pDbdAabjrjo"}}'
     http_version: null
-  recorded_at: Sat, 16 May 2020 12:41:46 GMT
+  recorded_at: Sat, 06 Jun 2020 12:44:25 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/data/ObjectMetadata_Istl.json?sid=LGCEfVdNoCONqX94
+    uri: https://<SMA_API_HOST>/data/ObjectMetadata_Istl.json?sid=kRbh7pDbdAabjrjo
     body:
       encoding: UTF-8
       string: "{}"
@@ -68,7 +68,7 @@ http_interactions:
       Content-Length:
       - '37415'
       Date:
-      - Sat, 16 May 2020 12:41:45 GMT
+      - Sat, 06 Jun 2020 12:44:25 GMT
       Server:
       - lighttpd/1.4.48
     body:
@@ -7634,5 +7634,5 @@ http_interactions:
         34,\n\t\t\"DataFrmt\": 7,\n\t\t\"Scale\": 1,\n\t\t\"Typ\": 0,\n\t\t\"WriteLevel\":
         1,\n\t\t\"TagHier\": [\n\t\t\t853,\n\t\t\t4715\n\t\t]\n\t}\n}"
     http_version: null
-  recorded_at: Sat, 16 May 2020 12:41:46 GMT
+  recorded_at: Sat, 06 Jun 2020 12:44:25 GMT
 recorded_with: VCR 5.1.0

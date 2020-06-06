@@ -25,17 +25,17 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Sat, 09 May 2020 16:48:21 GMT
+      - Sat, 06 Jun 2020 12:25:07 GMT
       Server:
       - lighttpd/1.4.48
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"uFPwFBDSkMfSWCT8"}}'
+      string: '{"result":{"sid":"wMjAj6m1Qg31d5Ge"}}'
     http_version: null
-  recorded_at: Sat, 09 May 2020 16:48:22 GMT
+  recorded_at: Sat, 06 Jun 2020 12:25:07 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=uFPwFBDSkMfSWCT8
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=wMjAj6m1Qg31d5Ge
     body:
       encoding: UTF-8
       string: '{"destDev":[],"keys":["6100_40263F00","6400_00260100"]}'
@@ -56,14 +56,14 @@ http_interactions:
       Cache-Control:
       - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
       Content-Length:
-      - '105'
+      - '106'
       Date:
-      - Sat, 09 May 2020 16:48:21 GMT
+      - Sat, 06 Jun 2020 12:25:07 GMT
       Server:
       - lighttpd/1.4.48
     body:
       encoding: UTF-8
       string: '{"result":{"0199-B32F8CCE":{"6100_40263F00":{"1":[{"val":865}]},"6400_00260100":{"1":[{"val":836990}]}}}}'
     http_version: null
-  recorded_at: Sat, 09 May 2020 16:48:22 GMT
+  recorded_at: Sat, 06 Jun 2020 12:25:07 GMT
 recorded_with: VCR 5.1.0
