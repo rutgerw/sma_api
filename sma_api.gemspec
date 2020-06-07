@@ -16,6 +16,7 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.require_paths = ['lib']
+  spec.files = Dir.glob('{lib}/**/*') + %w[README.md License.txt]
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'byebug', '~> 11.1', '>= 11.1.3'
