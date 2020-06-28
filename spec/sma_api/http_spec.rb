@@ -71,6 +71,8 @@ RSpec.describe SmaApi::Http do
 
     before { client.destroy_session }
 
-    it { is_expected.to be_empty }
+    it 'clears @sid instance variable' do
+      expect(client.instance_eval { @sid }).to eq ''
+    end
   end
 end

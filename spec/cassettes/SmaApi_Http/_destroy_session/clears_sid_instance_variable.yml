@@ -25,17 +25,17 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Tue, 05 May 2020 19:22:42 GMT
+      - Sun, 28 Jun 2020 19:23:55 GMT
       Server:
       - lighttpd/1.4.48
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"Xskeunk8J918PlEX"}}'
+      string: '{"result":{"sid":"qOiEOT_NoZjNZTfN"}}'
     http_version: null
-  recorded_at: Tue, 05 May 2020 19:22:43 GMT
+  recorded_at: Sun, 28 Jun 2020 19:23:54 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=Xskeunk8J918PlEX
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=qOiEOT_NoZjNZTfN
     body:
       encoding: UTF-8
       string: "{}"
@@ -58,12 +58,12 @@ http_interactions:
       Content-Length:
       - '28'
       Date:
-      - Tue, 05 May 2020 19:22:42 GMT
+      - Sun, 28 Jun 2020 19:23:55 GMT
       Server:
       - lighttpd/1.4.48
     body:
       encoding: UTF-8
       string: '{"result":{"isLogin":false}}'
     http_version: null
-  recorded_at: Tue, 05 May 2020 19:22:43 GMT
+  recorded_at: Sun, 28 Jun 2020 19:23:54 GMT
 recorded_with: VCR 5.1.0
