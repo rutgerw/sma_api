@@ -13,7 +13,16 @@ module SmaApi
     end
 
     def post(url, payload = {})
-      with_valid_user(url, payload)
+      create_session if @sid.empty?
+
+      response = JSON.parse(http.post(url_with_sid(url), payload.to_json).body)
+
+      return response unless response.key? 'err'
+
+      raise SmaApi::Error, "Error #{response['err']} during request" unless response['err'] == 401
+
+      create_session
+      post(url, payload)
     end
 
     def create_session
@@ -33,30 +42,17 @@ module SmaApi
       @sid
     end
 
+    def url_with_sid(url)
+      url + "?sid=#{@sid}"
+    end
+
     def destroy_session
-      with_valid_user('/dyn/logout.json', {})
+      post('/dyn/logout.json', {})
 
       @sid = ''
     end
 
     private
-
-    def with_valid_user(url, payload)
-      create_session if @sid.empty?
-
-      url_with_sid = url + "?sid=#{@sid}"
-
-      response = JSON.parse(http.post(url_with_sid, payload.to_json).body)
-
-      return response unless response.key? 'err'
-
-      if response['err'] == 401
-        create_session
-        with_valid_user(url, payload)
-      else
-        raise SmaApi::Error, "Error #{response['err']} during request"
-      end
-    end
 
     def http
       @http ||= configure_http_client
