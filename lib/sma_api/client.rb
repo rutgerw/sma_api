@@ -40,6 +40,10 @@ module SmaApi
       end
     end
 
+    def download(path, target)
+      @client.download(path, target)
+    end
+
     def object_metadata
       @client.post('/data/ObjectMetadata_Istl.json')
     end

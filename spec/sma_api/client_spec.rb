@@ -198,4 +198,22 @@ RSpec.describe SmaApi::Client do
     end
   end
 
+  describe '#download' do
+    let(:path) { '/some/path' }
+    let(:target) { '/tmp/test' }
+
+    before do
+      allow_any_instance_of(SmaApi::Http)
+        .to receive(:download)
+        .with(path, target)
+    end
+
+    it 'calls SmaApi::Http.download' do
+      expect_any_instance_of(SmaApi::Http)
+        .to receive(:download)
+        .with(path, target)
+
+      client.download(path, target)
+    end
+  end
 end

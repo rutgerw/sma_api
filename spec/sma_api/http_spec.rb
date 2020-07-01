@@ -80,9 +80,6 @@ RSpec.describe SmaApi::Http do
 
       it { is_expected.to eq(1437) }
     end
-
-    context 'when file not found' do
-    end
   end
 
   describe '#destroy_session', :vcr do
