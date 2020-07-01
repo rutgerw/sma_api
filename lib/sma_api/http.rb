@@ -13,8 +13,6 @@ module SmaApi
     end
 
     def post(url, payload = {})
-      create_session if @sid.empty?
-
       response = JSON.parse(http.post(url_with_sid(url), payload.to_json).body)
 
       return response unless response.key? 'err'
@@ -23,6 +21,18 @@ module SmaApi
 
       create_session
       post(url, payload)
+    end
+
+    def download(url, path)
+      create_session if @sid.empty?
+
+      file = File.open(path, 'wb')
+
+      begin
+        file.write(http.get('/fs/' + url_with_sid(url)).body)
+      ensure
+        file.close
+      end
     end
 
     def create_session

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'fakefs/spec_helpers'
+
 RSpec.describe SmaApi::Http do
   let(:host) { ENV['SMA_API_HOST'] }
   let(:client) do
@@ -64,6 +66,23 @@ RSpec.describe SmaApi::Http do
     subject { client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] }) }
 
     it { is_expected.to have_key('result') }
+  end
+
+  describe '#download', :vcr do
+    include FakeFS::SpecHelpers
+    let(:url) { '/DIAGNOSE/EVENTS/2020/EV200417.ZIP' }
+    let(:target) { 'somezip.zip' }
+
+    context 'when file_exists' do
+      subject { File.size(target) }
+
+      before { client.download(url, target) }
+
+      it { is_expected.to eq(1437) }
+    end
+
+    context 'when file not found' do
+    end
   end
 
   describe '#destroy_session', :vcr do
