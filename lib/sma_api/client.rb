@@ -26,6 +26,24 @@ module SmaApi
       end
     end
 
+    def get_fs(path)
+      result = @client.post('/dyn/getFS.json', { destDev: [], path: path })
+
+      result['result'].first[1][path].map do |f|
+        type = f.key?('f') ? 'f' : 'd'
+        {
+          name: f['d'] || f['f'],
+          type: type,
+          last_modified: Time.at(f['tm']),
+          size: f['s']
+        }
+      end
+    end
+
+    def download(path, target)
+      @client.download(path, target)
+    end
+
     def object_metadata
       @client.post('/data/ObjectMetadata_Istl.json')
     end

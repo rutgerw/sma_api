@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '37'
+      Date:
+      - Thu, 02 Jul 2020 19:59:30 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"nZ95Rnzi09ii3mDL"}}'
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:59:30 GMT
+- request:
+    method: get
+    uri: https://<SMA_API_HOST>/fs//DIAGNOSE/EVENTS/2020/EV200417.ZIP?sid=nZ95Rnzi09ii3mDL
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/zip
+      Etag:
+      - '"1566488086"'
+      Last-Modified:
+      - Fri, 17 Apr 2020 18:27:40 GMT
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '1437'
+      Date:
+      - Thu, 02 Jul 2020 19:59:30 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        UEsDBBQAAAAIAHSTkVAPVyUa7wQAAK5VAAAMABwARVYyMDA0MTcuVFhUVVQJAAMb9Zle7jWZXnV4CwABBAAAAAAEBgAAANWcS2sUQRSF94L/ofcaqEfXq7eZKG4kkPkDQV24UYlB8d9bDZmeC8rkVJ/blZls8mY+bk6d+6jbccaZKzNe2bi3eXJu8uGNMZMxb4e7D7tpNGW4+zh5Y6LzqRg3XH///GUqxg77Pz+m+u7m56f608Ptw9fJD+8f6tfSsKu/aer3dtffHic73P5+qJ/WH9rXr7uUwnDz63H+Vhh294/302Ce3k588PqV+4c0AqTWXA6qvRxUXz96WdRxrC+ECeDA6v7D6mFWF0fP4WYQNxK4UeCO2+MWU//aUgiliTYdaG2n0AYitEmElhRuAXAT5QZZ54hZA5DGfAr12bhmJRFgrCdTVz/W7bOslgIQUjLLdkXlsmxXVC7LKqF63yHLZuGtsQ8uk2WLwE3b43JZNhsl04JDS2TZI2wNbeZwx62zbLZKRwxxAy7LHlFZEUCsVJZVYw2IAkjrOsJWwZY+uIR1ZXfEDWZ7XNK6fG8lMNblRWgth4scMs66Rh3rCsi4gLSuUUsEECtnXTqsof56B+sahWBdH1zGusQoJnSILmldsbcSGOsSY6PAjI0q7vZVV9KwroD1YKR16Qy4UFbOurRYPTKHYa1LDOMCJwMYl7Eu0d8Gpr8FcUnrKr2VwFiX6MUD04tXXLu1dRWjY10jePXFHLEiOvHAdOINuMQRK6IPC0wfBuJyR6w4pSMGh5Y4YkX0jHFdz5j2xs64wUG41hoitsem0R4N4d38toNpx2mOL3JPwx4z0TXGdV1jMy5zzETPENf1DE245DEL5DE7sIYOmayI/iYyuGUy4KUNJVzRM8R1PUMzLiNcUTHGddm3CZcULnvR2BxaRriiuo3rqtsDruvQOxRRMcZ1FWMz7nrhZiPqsLiuDmvCpYQ7d8s6woVDu164AraGdl3NuOBu3Ttk47je4UCKrs0RR0ywuphWV4xtuMwREzVYYmowEJc8YuyMeWFF9+eYIybqxcTUiyAud8TIxcSFFFlHoyaLApUVAVKFU5NFPVboWoy1LlGFp064jHWJKjxxVTiES1oXO2NuDi1jXaJjSJwhQDePnHWR214LKWKypHVp9TYYK2ddKqzOwGuUlHWJPiwRfVgLLmNdog9LRB+G4nLWZdktuubQEtZlRc+YiJ5xxt3cuiy5RbeQbm9dVqW7nVmhCpGyLjVWh8zsmV11NQU4cFXiYlCZXfXOqMyuuhoq1MyQWdaKoVEihkYtuESWtWIUk4lRDIpLZll24fPAOnYYH1oxNsrE2AjF5bIsufC5kCLZgMyyKgMumJXLsmqsSPXCZVktBYBjw4tB5bJsV1Quy6qgWuzxVTbLirlxJubGLbhMlhVTw8wYAYhLZll2N7k5tEyWFRPOTEw4Ky70hDCXZcnd5IUUuU4ks6zKLBZm5bKsGit2PXcOCtj8v5t0RuWybFdULstqoAY7BWRE5E9qNXQ5Vg2sJ8LaidVhScAHnbgyEnCTQ0fFI5FexS1XJnHRasATuOKOIxN3HBUXepw9nhTts7TskxQLK/JUVcxnwOpxGVhCBuLuKK++Owr1xbHVXk4GTuHuaH4QEHsW8BxYXZUBeMXx4qzeX4gGbK4vg60+cFagw2rH+kqXw4otbZ2BBtwIt4fnwAo9oXQWcU34sikxz3Dibj6vvZt/wkUkS80zHH0x90QKbRlS84wjKiuC7Tci17L+BVBLAQIeAxQAAAAIAHSTkVAPVyUa7wQAAK5VAAAMABgAAAAAAAEAAACwgQAAAABFVjIwMDQxNy5UWFRVVAUAAxv1mV51eAsAAQQAAAAABAYAAABQSwUGAAAAAAEAAQBSAAAANQUAAAAA
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:59:30 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=nZ95Rnzi09ii3mDL
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '28'
+      Date:
+      - Thu, 02 Jul 2020 19:59:30 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"isLogin":false}}'
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:59:30 GMT
+recorded_with: VCR 5.1.0

@@ -139,4 +139,81 @@ RSpec.describe SmaApi::Client do
 
     it { is_expected.to include(*first_result) }
   end
+
+  describe '#get_fs' do
+    subject { client.get_fs(path) }
+
+    before do
+      allow_any_instance_of(SmaApi::Http)
+        .to receive(:post)
+        .with('/dyn/getFS.json', { destDev: [], path: path })
+        .and_return(response)
+    end
+
+    context 'when path exists' do
+      let(:path) { '/DIAGNOSE/' }
+      let(:response) do
+        {
+          'result' =>
+            {
+              '0199-B32F8CCE' =>
+                {
+                  '/DIAGNOSE/' =>
+                    [
+                      { 'd' => 'ONLINE5M', 'tm' => 1_593_269_257 },
+                      { 'f' => 'DA200627.023', 'tm' => 1_593_228_611, 's' => 79_567 }
+                    ]
+                }
+            }
+        }
+      end
+      let(:result) do
+        [
+          {
+            name: 'ONLINE5M',
+            type: 'd',
+            last_modified: Time.at(1_593_269_257),
+            size: nil
+          },
+          {
+            name: 'DA200627.023',
+            type: 'f',
+            last_modified: Time.at(1_593_228_611),
+            size: 79_567
+          }
+        ]
+      end
+
+      it { is_expected.to eq(result) }
+    end
+
+    context 'when path does not exists' do
+      let(:path) { '/nope/' }
+      let(:response) do
+        { 'result' => { '0199-B32F8CCE' => { path => [] } } }
+      end
+      let(:result) { [] }
+
+      it { is_expected.to eq(result) }
+    end
+  end
+
+  describe '#download' do
+    let(:path) { '/some/path' }
+    let(:target) { '/tmp/test' }
+
+    before do
+      allow_any_instance_of(SmaApi::Http)
+        .to receive(:download)
+        .with(path, target)
+    end
+
+    it 'calls SmaApi::Http.download' do
+      expect_any_instance_of(SmaApi::Http)
+        .to receive(:download)
+        .with(path, target)
+
+      client.download(path, target)
+    end
+  end
 end
