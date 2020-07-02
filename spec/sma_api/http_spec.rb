@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'fakefs/spec_helpers'
-
 RSpec.describe SmaApi::Http do
   let(:host) { ENV['SMA_API_HOST'] }
   let(:client) do
@@ -69,11 +67,13 @@ RSpec.describe SmaApi::Http do
   end
 
   describe '#download', :vcr do
-    include FakeFS::SpecHelpers
     let(:url) { '/DIAGNOSE/EVENTS/2020/EV200417.ZIP' }
     let(:target) { 'somezip.zip' }
 
-    after { client.destroy_session }
+    after do
+      client.destroy_session
+      File.delete(target)
+    end
 
     context 'when file exists' do
       subject { File.size(target) }
