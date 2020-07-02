@@ -31,7 +31,10 @@ module SmaApi
       file = File.open(path, 'wb')
 
       begin
-        file.write(http.get('/fs/' + url_with_sid(url)).body)
+        res = http.get('/fs/' + url_with_sid(url))
+        raise "Error retrieving file (#{res.code} #{res.message})" unless res.code == '200'
+
+        file.write(res.body)
       ensure
         file.close
       end

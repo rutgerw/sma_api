@@ -1,0 +1,100 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '37'
+      Date:
+      - Thu, 02 Jul 2020 19:04:23 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"FlFamthquj5qFuBm"}}'
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:04:23 GMT
+- request:
+    method: get
+    uri: https://<SMA_API_HOST>/fs//none_existent?sid=FlFamthquj5qFuBm
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 02 Jul 2020 19:04:23 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:04:23 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=FlFamthquj5qFuBm
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      Content-Length:
+      - '28'
+      Date:
+      - Thu, 02 Jul 2020 19:04:23 GMT
+      Server:
+      - lighttpd/1.4.48
+    body:
+      encoding: UTF-8
+      string: '{"result":{"isLogin":false}}'
+    http_version: null
+  recorded_at: Thu, 02 Jul 2020 19:04:23 GMT
+recorded_with: VCR 5.1.0

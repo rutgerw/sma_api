@@ -73,12 +73,24 @@ RSpec.describe SmaApi::Http do
     let(:url) { '/DIAGNOSE/EVENTS/2020/EV200417.ZIP' }
     let(:target) { 'somezip.zip' }
 
-    context 'when file_exists' do
+    after { client.destroy_session }
+
+    context 'when file exists' do
       subject { File.size(target) }
 
       before { client.download(url, target) }
 
       it { is_expected.to eq(1437) }
+    end
+
+    context 'when file does not exists' do
+      let(:url) { '/none_existent' }
+
+      subject do
+        -> { client.download(url, target) }
+      end
+
+      it { is_expected.to raise_error(RuntimeError, 'Error retrieving file (404 Not Found)') }
     end
   end
 
