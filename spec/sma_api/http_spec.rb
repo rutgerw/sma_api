@@ -76,11 +76,26 @@ RSpec.describe SmaApi::Http do
     end
 
     context 'when file exists' do
-      subject { File.size(target) }
+      context 'and session is valid' do
+        subject { File.size(target) }
 
-      before { client.download(url, target) }
+        before { client.download(url, target) }
 
-      it { is_expected.to eq(1437) }
+        it { is_expected.to eq(1437) }
+      end
+
+      context 'and session is initially invalid' do
+        let(:sid) { 'vNjAqDzglpugpDT3' }
+        let(:client) do
+          described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'], sid: sid)
+        end
+
+        subject { File.size(target) }
+
+        before { client.download(url, target) }
+
+        it { is_expected.to eq(1437) }
+      end
     end
 
     context 'when file does not exists' do

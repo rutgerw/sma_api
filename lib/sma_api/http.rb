@@ -31,13 +31,26 @@ module SmaApi
       file = File.open(path, 'wb')
 
       begin
-        res = http.get('/fs/' + url_with_sid(url))
-        raise "Error retrieving file (#{res.code} #{res.message})" unless res.code == '200'
+        res = retrieve_file(url)
 
         file.write(res.body)
       ensure
         file.close
       end
+    end
+
+    def retrieve_file(url)
+      res = http.get('/fs' + url_with_sid(url))
+
+      unless res.code == '200'
+        # Try again because invalid sid does not result in a 401
+        create_session
+        res = http.get('/fs' + url_with_sid(url))
+
+        raise "Error retrieving file (#{res.code} #{res.message})" unless res.code == '200'
+      end
+
+      res
     end
 
     def create_session
