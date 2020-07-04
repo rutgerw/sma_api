@@ -4,7 +4,7 @@ require 'json'
 require 'net/http'
 
 module SmaApi
-  # Http wrapper
+  # Net::HTTP wrapper for the SMA Inverter web interface
   class Http
     def initialize(host:, password:, sid: nil)
       @host = host
@@ -12,6 +12,11 @@ module SmaApi
       @sid = sid || ''
     end
 
+    # Perform a HTTP POST.
+    #
+    # @param url [String] URL. It should start with a '/'
+    # @param payload [Hash] The payload that will be used in the post
+    # @return [Hash] The response
     def post(url, payload = {})
       create_session if @sid.empty?
 
@@ -25,6 +30,10 @@ module SmaApi
       post(url, payload)
     end
 
+    # Download the file specified by url and store it in a file on the local file system.
+    #
+    # @param url [String] URL without /fs prefix. It should start with a '/'
+    # @param path [String] Path of the local file
     def download(url, path)
       create_session if @sid.empty?
 
@@ -37,6 +46,45 @@ module SmaApi
       ensure
         file.close
       end
+    end
+
+    # Creates a session using the supplied password
+    #
+    # @raise [SmaApi::Error] Creating session failed, for example if the password is wrong
+    # @return [String] the session id that will be used in subsequent requests.
+    def create_session
+      payload = {
+        right: 'usr', pass: @password
+      }
+      result = JSON.parse(http.post('/dyn/login.json', payload.to_json).body).fetch('result', {})
+
+      raise SmaApi::Error, 'Creating session failed' unless result['sid']
+
+      @sid = result['sid']
+    end
+
+    # The current session id. If empty, it will create a new session
+    #
+    # @return [String] the session id that will be used in subsequent requests.
+    def sid
+      create_session if @sid.empty?
+
+      @sid
+    end
+
+    # Logout and clear the session. This is the same as using Logout from the web interface
+    #
+    # @return [String] An empty session id
+    def destroy_session
+      post('/dyn/logout.json', {})
+
+      @sid = ''
+    end
+
+    private
+
+    def url_with_sid(url)
+      url + "?sid=#{@sid}"
     end
 
     def retrieve_file(url)
@@ -52,35 +100,6 @@ module SmaApi
 
       res
     end
-
-    def create_session
-      payload = {
-        right: 'usr', pass: @password
-      }
-      result = JSON.parse(http.post('/dyn/login.json', payload.to_json).body).fetch('result', {})
-
-      raise SmaApi::Error, 'Creating session failed' unless result['sid']
-
-      @sid = result['sid']
-    end
-
-    def sid
-      create_session if @sid.empty?
-
-      @sid
-    end
-
-    def url_with_sid(url)
-      url + "?sid=#{@sid}"
-    end
-
-    def destroy_session
-      post('/dyn/logout.json', {})
-
-      @sid = ''
-    end
-
-    private
 
     def http
       @http ||= configure_http_client

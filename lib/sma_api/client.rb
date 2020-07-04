@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SmaApi
-  # Client for reading SMA Inverter
+  # Ruby client for communicating with SMA Inverter web interface
   class Client
     def initialize(host:, password:, sid: nil)
       @host = host
@@ -9,14 +9,24 @@ module SmaApi
       @client = Http.new(host: host, password: password, sid: sid)
     end
 
+    # The current session id. If empty, it will create a new session
+    #
+    # @return [String] the session id that will be used in subsequent requests.
     def sid
       @client.sid
     end
 
+    # Logout and clear the session. This is the same as using Logout from the web interface
+    #
+    # @return [String] An empty session id
     def destroy_session
       @client.destroy_session
     end
 
+    # Retrieve values specified by the keys using getValues.json endpoint.
+    #
+    # @param keys [Array<String>] List of keys
+    # @return [Hash] Key-value pairs
     def get_values(keys)
       result = @client.post('/dyn/getValues.json', { destDev: [], keys: keys })
       return nil unless result['result']
@@ -26,6 +36,9 @@ module SmaApi
       end
     end
 
+    # Retrieve list of files and directories for the path.
+    #
+    # @return [Array] List of directories and files
     def get_fs(path)
       result = @client.post('/dyn/getFS.json', { destDev: [], path: path })
 
@@ -40,10 +53,17 @@ module SmaApi
       end
     end
 
+    # Download the file specified by url and store it in a file on the local file system.
+    #
+    # @param url [String] URL without /fs prefix. It should start with a '/'
+    # @param path [String] Path of the local file
     def download(path, target)
       @client.download(path, target)
     end
 
+    # ObjectMetadata_Istl endpoint
+    #
+    # @return [Array] List of available object metadata
     def object_metadata
       @client.post('/data/ObjectMetadata_Istl.json')
     end
