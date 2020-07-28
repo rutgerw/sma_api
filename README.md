@@ -62,17 +62,24 @@ In case the `sid` is not valid anymore, the client will try to create a new sess
 ```ruby
 require 'sma_api'
 
-# Read session id from a file
-sid = File.read('/tmp/sma_session').strip rescue nil
+# Cache the sid in this file
+sid_file = '/tmp/sma_sid.txt'
 
-client = SmaApi::Client.new(host: 'inverter address', password: 'password', sid: sid)
+sid = File.read(sid_file).chop rescue ''
 
-# Current production
-puts client.get_values(['6100_40263F00'])
+client = SmaApi::Client.new(host: ENV['SMA_API_HOST'], password: ENV['SMA_API_WEB_PASSWORD'], sid: sid)
 
-# Save session id
-if sid != client.sid
-  File.open('/tmp/sma_session','w') {|file| file.puts client.sid }
+while true do
+  current_yield = client.get_values(['6100_40263F00'])
+
+  # If sid has been changed, save it to the sid file
+  if client.sid != sid
+    File.open(sid_file, 'w') { |f| f.puts sid }
+  end
+
+  puts "#{Time.now}\tCurrent yield: #{current_yield}"
+
+  sleep 2
 end
 ```
 
