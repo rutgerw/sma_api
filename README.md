@@ -17,7 +17,7 @@ it has not been tested.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'sma_api', git: 'https://github.com/rutgerw/sma_api'
+gem 'sma_api'
 ```
 
 And then execute:
