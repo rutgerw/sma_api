@@ -101,6 +101,13 @@ client.destroy_session
 at_exit { client.destroy_session }
 ```
 
+## How to get the keys for get_values method
+
+The `get_values` method accepts an array of keys. These keys can be found using the SMA web interface. Use the browser Developer Tools to find the keys. In the example below, the key for "Power" (Dutch: "Vermogen") is `6100_40263F00`
+
+![image](https://user-images.githubusercontent.com/695622/88839303-2d85ae00-d1db-11ea-9c14-2704ee160856.png)
+
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/rutgerw/sma_api.
