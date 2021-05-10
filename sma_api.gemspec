@@ -15,6 +15,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/rutgerw/sma_api'
   spec.license       = 'MIT'
 
+  spec.metadata      = {
+    "changelog_uri" => "https://github.com/rutgerw/sma_api/blob/master/CHANGELOG.md"
+  }
+
   spec.require_paths = ['lib']
   spec.files = Dir.glob('{lib}/**/*') + %w[README.md License.txt]
 
