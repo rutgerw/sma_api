@@ -18,7 +18,7 @@ RSpec.describe SmaApi::Client do
       describe 'password' do
         subject { -> { described_class.new host: '0.0.0.0' } }
 
-        it { is_expected.not_to raise_error ArgumentError }
+        it { is_expected.to raise_error ArgumentError }
       end
     end
 
