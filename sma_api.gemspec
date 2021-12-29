@@ -16,7 +16,8 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
 
   spec.metadata      = {
-    "changelog_uri" => "https://github.com/rutgerw/sma_api/blob/master/CHANGELOG.md"
+    'changelog_uri' => 'https://github.com/rutgerw/sma_api/blob/master/CHANGELOG.md',
+    'documentation_uri' => 'https://rubydoc.info/gems/sma_api'
   }
 
   spec.require_paths = ['lib']
