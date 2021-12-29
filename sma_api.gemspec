@@ -21,13 +21,14 @@ Gem::Specification.new do |spec|
   }
 
   spec.require_paths = ['lib']
+  spec.required_ruby_version = '>= 2.5'
   spec.files = Dir.glob('{lib}/**/*') + %w[README.md License.txt]
 
   spec.add_development_dependency 'bundler', '~> 2.1'
   spec.add_development_dependency 'byebug', '~> 11.1', '>= 11.1.3'
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.9'
-  spec.add_development_dependency 'rubocop', '~> 0.82.0'
+  spec.add_development_dependency 'rubocop', '~> 1.24.0'
   spec.add_development_dependency 'rubocop-rspec', '~> 1.39'
   spec.add_development_dependency 'vcr', '~> 5.1'
   spec.add_development_dependency 'webmock', '~> 3.8', '>= 3.8.3'

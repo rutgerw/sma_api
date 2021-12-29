@@ -16,6 +16,9 @@ Metrics/BlockLength:
     - '*.gemspec'
     - 'spec/**/*.rb'
 
+Naming/VariableNumber:
+  Enabled: false
+
 Style/ExponentialNotation:
   Enabled: true
 
