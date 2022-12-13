@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe SmaApi::Client do
-  let(:host) { ENV['SMA_API_HOST'] }
-  let(:password) { ENV['SMA_API_WEB_PASSWORD'] }
+  let(:host) { ENV.fetch('SMA_API_HOST', nil) }
+  let(:password) { ENV.fetch('SMA_API_WEB_PASSWORD', nil) }
   let(:client) { described_class.new host: host, password: password }
 
   describe '.new' do
@@ -10,15 +10,19 @@ RSpec.describe SmaApi::Client do
 
     context 'required parameters' do
       describe 'host' do
-        subject { -> { described_class.new password: 'pw' } }
+        subject { described_class.new password: 'pw' }
 
-        it { is_expected.to raise_error ArgumentError }
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error ArgumentError
+        end
       end
 
       describe 'password' do
-        subject { -> { described_class.new host: '0.0.0.0' } }
+        subject { described_class.new host: '0.0.0.0' }
 
-        it { is_expected.to raise_error ArgumentError }
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error ArgumentError
+        end
       end
     end
 
@@ -99,7 +103,7 @@ RSpec.describe SmaApi::Client do
     end
     let(:client_response) do
       {
-        "6180_08419000": {
+        '6180_08419000': { # rubocop:disable Naming/VariableNumber
           'Prio' => 2,
           'TagId' => 814,
           'TagIdEvtMsg' => 10_003,

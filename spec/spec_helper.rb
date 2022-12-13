@@ -24,6 +24,6 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
   c.cassette_library_dir = 'spec/cassettes'
-  c.filter_sensitive_data('<SMA_API_WEB_PASSWORD>') { ENV['SMA_API_WEB_PASSWORD'] }
-  c.filter_sensitive_data('<SMA_API_HOST>') { ENV['SMA_API_HOST'] }
+  c.filter_sensitive_data('<SMA_API_WEB_PASSWORD>') { ENV.fetch('SMA_API_WEB_PASSWORD', nil) }
+  c.filter_sensitive_data('<SMA_API_HOST>') { ENV.fetch('SMA_API_HOST', nil) }
 end
