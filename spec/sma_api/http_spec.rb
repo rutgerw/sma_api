@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe SmaApi::Http do
-  let(:host) { ENV['SMA_API_HOST'] }
+  let(:host) { ENV.fetch('SMA_API_HOST', nil) }
   let(:client) do
-    described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'])
+    described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
   end
 
   describe '.new' do
@@ -11,31 +11,34 @@ RSpec.describe SmaApi::Http do
 
     context 'required parameters' do
       describe 'host' do
-        subject { -> { described_class.new(password: 'pw') } }
+        subject { described_class.new(password: 'pw') }
 
-        it { is_expected.to raise_error(ArgumentError) }
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error ArgumentError
+        end
       end
 
       describe 'password' do
-        subject do
-          -> { described_class.new(host: '0.0.0.0') }
-        end
+        subject { described_class.new(host: '0.0.0.0') }
 
-        it { is_expected.to raise_error(ArgumentError) }
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error ArgumentError
+        end
       end
     end
 
     context 'optional parameters', :vcr do
       describe 'sid' do
         let(:sid) do
-          client = described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'])
+          client = described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
           client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
 
           client.sid
         end
 
         it 'uses sid in initialize' do
-          client = described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'], sid: sid)
+          client = described_class.new(host: host,
+                                       password: ENV.fetch('SMA_API_WEB_PASSWORD', nil), sid: sid)
           client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
 
           expect(client.sid).to eq(sid)
@@ -52,9 +55,11 @@ RSpec.describe SmaApi::Http do
     end
 
     context 'invalid password' do
-      subject { -> { described_class.new(host: host, password: 123).create_session } }
+      subject { described_class.new(host: host, password: 123).create_session }
 
-      it { is_expected.to raise_error(SmaApi::Error) }
+      it 'raises SmaApi::Error' do
+        expect { subject }.to raise_error(SmaApi::Error)
+      end
     end
   end
 
@@ -87,7 +92,8 @@ RSpec.describe SmaApi::Http do
       context 'and session is initially invalid' do
         let(:sid) { 'vNjAqDzglpugpDT3' }
         let(:client) do
-          described_class.new(host: host, password: ENV['SMA_API_WEB_PASSWORD'], sid: sid)
+          described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil),
+                              sid: sid)
         end
 
         subject { File.size(target) }
@@ -101,11 +107,11 @@ RSpec.describe SmaApi::Http do
     context 'when file does not exists' do
       let(:url) { '/none_existent' }
 
-      subject do
-        -> { client.download(url, target) }
-      end
+      subject { client.download(url, target) }
 
-      it { is_expected.to raise_error(RuntimeError, 'Error retrieving file (404 Not Found)') }
+      it 'raises RuntimeError' do
+        expect { subject }.to raise_error(RuntimeError)
+      end
     end
   end
 

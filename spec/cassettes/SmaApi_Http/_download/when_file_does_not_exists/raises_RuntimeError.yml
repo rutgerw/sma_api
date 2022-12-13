@@ -1,0 +1,185 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '37'
+      Date:
+      - Tue, 13 Dec 2022 18:31:52 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"xDbgUKZZoyAZgKpD"}}'
+  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+- request:
+    method: get
+    uri: https://<SMA_API_HOST>/fs/none_existent?sid=xDbgUKZZoyAZgKpD
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Content-Type:
+      - text/html
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '365'
+      Date:
+      - Tue, 13 Dec 2022 18:31:52 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+         <head>
+          <title>500 Internal Server Error</title>
+         </head>
+         <body>
+          <h1>500 Internal Server Error</h1>
+         </body>
+        </html>
+  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '37'
+      Date:
+      - Tue, 13 Dec 2022 18:31:52 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"OjZqG36-P6l--06X"}}'
+  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+- request:
+    method: get
+    uri: https://<SMA_API_HOST>/fs/none_existent?sid=OjZqG36-P6l--06X
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Content-Type:
+      - text/html
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '365'
+      Date:
+      - Tue, 13 Dec 2022 18:31:52 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+         <head>
+          <title>500 Internal Server Error</title>
+         </head>
+         <body>
+          <h1>500 Internal Server Error</h1>
+         </body>
+        </html>
+  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=OjZqG36-P6l--06X
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '28'
+      Date:
+      - Tue, 13 Dec 2022 18:31:53 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: '{"result":{"isLogin":false}}'
+  recorded_at: Tue, 13 Dec 2022 18:31:52 GMT
+recorded_with: VCR 6.1.0
