@@ -3,7 +3,7 @@
 RSpec.describe SmaApi::Http do
   let(:host) { ENV.fetch('SMA_API_HOST', nil) }
   let(:client) do
-    described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
+    described_class.new(host:, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
   end
 
   describe '.new' do
@@ -30,15 +30,15 @@ RSpec.describe SmaApi::Http do
     context 'optional parameters', :vcr do
       describe 'sid' do
         let(:sid) do
-          client = described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
+          client = described_class.new(host:, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil))
           client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
 
           client.sid
         end
 
         it 'uses sid in initialize' do
-          client = described_class.new(host: host,
-                                       password: ENV.fetch('SMA_API_WEB_PASSWORD', nil), sid: sid)
+          client = described_class.new(host:,
+                                       password: ENV.fetch('SMA_API_WEB_PASSWORD', nil), sid:)
           client.post('/dyn/getValues.json', { destDev: [], keys: ['6100_40263F00'] })
 
           expect(client.sid).to eq(sid)
@@ -55,7 +55,7 @@ RSpec.describe SmaApi::Http do
     end
 
     context 'invalid password' do
-      subject { described_class.new(host: host, password: 123).create_session }
+      subject { described_class.new(host:, password: 123).create_session }
 
       it 'raises SmaApi::Error' do
         expect { subject }.to raise_error(SmaApi::Error)
@@ -92,8 +92,8 @@ RSpec.describe SmaApi::Http do
       context 'and session is initially invalid' do
         let(:sid) { 'vNjAqDzglpugpDT3' }
         let(:client) do
-          described_class.new(host: host, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil),
-                              sid: sid)
+          described_class.new(host:, password: ENV.fetch('SMA_API_WEB_PASSWORD', nil),
+                              sid:)
         end
 
         subject { File.size(target) }

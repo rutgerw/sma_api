@@ -3,7 +3,7 @@
 RSpec.describe SmaApi::Client do
   let(:host) { ENV.fetch('SMA_API_HOST', nil) }
   let(:password) { ENV.fetch('SMA_API_WEB_PASSWORD', nil) }
-  let(:client) { described_class.new host: host, password: password }
+  let(:client) { described_class.new host:, password: }
 
   describe '.new' do
     subject { client }
@@ -30,10 +30,10 @@ RSpec.describe SmaApi::Client do
       describe 'sid' do
         let(:sid) { 'some session id' }
 
-        subject { described_class.new host: host, password: password, sid: sid }
+        subject { described_class.new host:, password:, sid: }
 
         it 'passes sid to http client' do
-          expect(SmaApi::Http).to receive(:new).with(host: host, password: password, sid: sid)
+          expect(SmaApi::Http).to receive(:new).with(host:, password:, sid:)
 
           subject
         end
@@ -88,7 +88,7 @@ RSpec.describe SmaApi::Client do
     before do
       allow_any_instance_of(SmaApi::Http)
         .to receive(:post)
-        .with('/dyn/getValues.json', { destDev: [], keys: keys })
+        .with('/dyn/getValues.json', { destDev: [], keys: })
         .and_return(client_response)
     end
 
@@ -150,7 +150,7 @@ RSpec.describe SmaApi::Client do
     before do
       allow_any_instance_of(SmaApi::Http)
         .to receive(:post)
-        .with('/dyn/getFS.json', { destDev: [], path: path })
+        .with('/dyn/getFS.json', { destDev: [], path: })
         .and_return(response)
     end
 

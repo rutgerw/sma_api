@@ -12,3 +12,6 @@
 
 .env
 .rake_tasks~
+
+.tool-versions
+
