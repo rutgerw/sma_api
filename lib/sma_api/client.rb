@@ -6,7 +6,7 @@ module SmaApi
     def initialize(host:, password:, sid: nil)
       @host = host
       @password = password
-      @client = Http.new(host: host, password: password, sid: sid)
+      @client = Http.new(host:, password:, sid:)
     end
 
     # The current session id. If empty, it will create a new session
@@ -28,7 +28,7 @@ module SmaApi
     # @param keys [Array<String>] List of keys
     # @return [Hash] Key-value pairs
     def get_values(keys)
-      result = @client.post('/dyn/getValues.json', { destDev: [], keys: keys })
+      result = @client.post('/dyn/getValues.json', { destDev: [], keys: })
       return nil unless result['result']
 
       keys.each_with_object({}) do |k, h|
@@ -40,13 +40,13 @@ module SmaApi
     #
     # @return [Array] List of directories and files
     def get_fs(path)
-      result = @client.post('/dyn/getFS.json', { destDev: [], path: path })
+      result = @client.post('/dyn/getFS.json', { destDev: [], path: })
 
       result['result'].first[1][path].map do |f|
         type = f.key?('f') ? 'f' : 'd'
         {
           name: f['d'] || f['f'],
-          type: type,
+          type:,
           last_modified: Time.at(f['tm']),
           size: f['s']
         }
