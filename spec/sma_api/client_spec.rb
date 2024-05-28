@@ -62,34 +62,14 @@ RSpec.describe SmaApi::Client do
     end
   end
 
-  describe '#get_values' do
-    let(:client_response) do
-      {
-        'result' => {
-          '0199-B32F8CCE' => {
-            '6100_40263F00' => {
-              '1' => [{ 'val' => 865 }]
-            },
-            '6400_00260100' => {
-              '1' => [{ 'val' => 836_990 }]
-            }
-          }
-        }
-      }
-    end
-    let(:keys) { %w[6100_40263F00 6400_00260100] }
+  describe '#get_values', :vcr do
+    let(:keys) { %w[6100_40263F00 6400_00260100 6380_40251E00_1] }
     let(:result) do
       {
-        '6100_40263F00' => 865,
-        '6400_00260100' => 836_990
+        '6100_40263F00' => 354,
+        '6400_00260100' => 11_505_903,
+        '6380_40251E00_1' => 245
       }
-    end
-
-    before do
-      allow_any_instance_of(SmaApi::Http)
-        .to receive(:post)
-        .with('/dyn/getValues.json', { destDev: [], keys: })
-        .and_return(client_response)
     end
 
     subject { client.get_values keys }
