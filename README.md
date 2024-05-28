@@ -74,7 +74,7 @@ while true do
 
   # If sid has been changed, save it to the sid file
   if client.sid != sid
-    File.open(sid_file, 'w') { |f| f.puts sid }
+    File.open(sid_file, 'w') { |f| f.puts client.sid }
   end
 
   puts "#{Time.now}\tCurrent yield: #{current_yield}"
