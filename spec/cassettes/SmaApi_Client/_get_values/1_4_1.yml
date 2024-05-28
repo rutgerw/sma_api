@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/login.json
+    body:
+      encoding: UTF-8
+      string: '{"right":"usr","pass":"<SMA_API_WEB_PASSWORD>"}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '37'
+      Date:
+      - Tue, 28 May 2024 16:57:29 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: '{"result":{"sid":"ihVajSgthW_t6Sw9"}}'
+  recorded_at: Tue, 28 May 2024 16:57:29 GMT
+- request:
+    method: post
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=ihVajSgthW_t6Sw9
+    body:
+      encoding: UTF-8
+      string: '{"destDev":[],"keys":["6100_40263F00","6400_00260100","6380_40251E00_1"]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json;
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
+      Content-Length:
+      - '155'
+      Date:
+      - Tue, 28 May 2024 16:57:29 GMT
+      Server:
+      - lighttpd/1.4.54
+    body:
+      encoding: UTF-8
+      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":354}]},"6400_00260100":{"1":[{"val":11505903}]},"6380_40251E00":{"1":[{"val":163},{"val":245}]}}}}'
+  recorded_at: Tue, 28 May 2024 16:57:30 GMT
+recorded_with: VCR 6.1.0

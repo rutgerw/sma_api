@@ -32,7 +32,7 @@ module SmaApi
       return nil unless result['result']
 
       keys.each_with_object({}) do |k, h|
-        h[k] = scalar_value(result['result'].first[1][k])
+        h[k] = get_value(k, result)
       end
     end
 
@@ -69,6 +69,19 @@ module SmaApi
     end
 
     private
+
+    def get_value(requested_key, result)
+      split_by_underscore = requested_key.split('_')
+      if split_by_underscore.size == 3
+        array_value(result, split_by_underscore[0..1].join('_'), split_by_underscore[2].to_i)
+      else
+        scalar_value(result['result'].first[1][requested_key])
+      end
+    end
+
+    def array_value(result, result_key, position)
+      result['result'].first[1][result_key]['1'][position]['val']
+    end
 
     def scalar_value(value)
       value['1'].first['val']
