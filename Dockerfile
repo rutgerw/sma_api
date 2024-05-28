@@ -1,4 +1,4 @@
-FROM ruby:3.0.3-alpine3.15
+FROM ruby:3.2-alpine
 
 RUN apk add make gcc musl-dev
 
