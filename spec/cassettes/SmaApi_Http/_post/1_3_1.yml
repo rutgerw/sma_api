@@ -21,21 +21,20 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
       - '37'
       Date:
-      - Tue, 05 May 2020 19:22:41 GMT
+      - Sun, 08 Dec 2024 09:39:03 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"RoxK3-E8bYQ8N9UB"}}'
-    http_version: null
-  recorded_at: Tue, 05 May 2020 19:22:42 GMT
+      string: '{"result":{"sid":"ElGW5NyyexiyiOCL"}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:02 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=RoxK3-E8bYQ8N9UB
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=ElGW5NyyexiyiOCL
     body:
       encoding: UTF-8
       string: '{"destDev":[],"keys":["6100_40263F00"]}'
@@ -54,21 +53,20 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
-      - '67'
+      - '66'
       Date:
-      - Tue, 05 May 2020 19:22:41 GMT
+      - Sun, 08 Dec 2024 09:39:03 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"0199-B32F8CCE":{"6100_40263F00":{"1":[{"val":null}]}}}}'
-    http_version: null
-  recorded_at: Tue, 05 May 2020 19:22:42 GMT
+      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":228}]}}}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:02 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=RoxK3-E8bYQ8N9UB
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=ElGW5NyyexiyiOCL
     body:
       encoding: UTF-8
       string: "{}"
@@ -87,16 +85,15 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
       - '28'
       Date:
-      - Tue, 05 May 2020 19:22:41 GMT
+      - Sun, 08 Dec 2024 09:39:03 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
       string: '{"result":{"isLogin":false}}'
-    http_version: null
-  recorded_at: Tue, 05 May 2020 19:22:42 GMT
-recorded_with: VCR 5.1.0
+  recorded_at: Sun, 08 Dec 2024 09:39:03 GMT
+recorded_with: VCR 6.3.1
