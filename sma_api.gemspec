@@ -24,12 +24,11 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.files = Dir.glob('{lib}/**/*') + %w[README.md License.txt]
 
-  spec.add_development_dependency 'bundler', '~> 2.3'
   spec.add_development_dependency 'byebug', '~> 11.1'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rspec', '~> 3.12'
-  spec.add_development_dependency 'rubocop', '~> 1.40'
-  spec.add_development_dependency 'rubocop-rspec', '~> 2.16'
-  spec.add_development_dependency 'vcr', '~> 6.1'
-  spec.add_development_dependency 'webmock', '~> 3.18'
+  spec.add_development_dependency 'rake', '~> 13.2'
+  spec.add_development_dependency 'rspec', '~> 3.13'
+  spec.add_development_dependency 'rubocop', '~> 1.69'
+  spec.add_development_dependency 'rubocop-rspec', '~> 3.2'
+  spec.add_development_dependency 'vcr', '~> 6.3'
+  spec.add_development_dependency 'webmock', '~> 3.24'
 end
