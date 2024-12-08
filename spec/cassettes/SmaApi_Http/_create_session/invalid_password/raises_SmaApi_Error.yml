@@ -25,11 +25,11 @@ http_interactions:
       Content-Length:
       - '23'
       Date:
-      - Tue, 13 Dec 2022 19:04:20 GMT
+      - Sun, 08 Dec 2024 09:39:03 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
       string: '{"result":{"sid":null}}'
-  recorded_at: Tue, 13 Dec 2022 19:04:19 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Sun, 08 Dec 2024 09:39:02 GMT
+recorded_with: VCR 6.3.1

@@ -21,21 +21,20 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
       - '37'
       Date:
-      - Sun, 28 Jun 2020 19:23:55 GMT
+      - Sun, 08 Dec 2024 09:39:06 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"qOiEOT_NoZjNZTfN"}}'
-    http_version: null
-  recorded_at: Sun, 28 Jun 2020 19:23:54 GMT
+      string: '{"result":{"sid":"CtmW_WCPRpePVVi6"}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:05 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=qOiEOT_NoZjNZTfN
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=CtmW_WCPRpePVVi6
     body:
       encoding: UTF-8
       string: "{}"
@@ -54,16 +53,15 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
       - '28'
       Date:
-      - Sun, 28 Jun 2020 19:23:55 GMT
+      - Sun, 08 Dec 2024 09:39:06 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
       string: '{"result":{"isLogin":false}}'
-    http_version: null
-  recorded_at: Sun, 28 Jun 2020 19:23:54 GMT
-recorded_with: VCR 5.1.0
+  recorded_at: Sun, 08 Dec 2024 09:39:06 GMT
+recorded_with: VCR 6.3.1

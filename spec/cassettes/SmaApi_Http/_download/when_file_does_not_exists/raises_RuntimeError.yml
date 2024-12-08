@@ -25,16 +25,16 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Tue, 13 Dec 2022 18:31:52 GMT
+      - Sun, 08 Dec 2024 10:13:17 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"xDbgUKZZoyAZgKpD"}}'
-  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+      string: '{"result":{"sid":"-0HTNnFTAhZT9k1m"}}'
+  recorded_at: Sun, 08 Dec 2024 10:13:16 GMT
 - request:
     method: get
-    uri: https://<SMA_API_HOST>/fs/none_existent?sid=xDbgUKZZoyAZgKpD
+    uri: https://<SMA_API_HOST>/fs/none_existent?sid=-0HTNnFTAhZT9k1m
     body:
       encoding: US-ASCII
       string: ''
@@ -57,7 +57,7 @@ http_interactions:
       Content-Length:
       - '365'
       Date:
-      - Tue, 13 Dec 2022 18:31:52 GMT
+      - Sun, 08 Dec 2024 10:13:17 GMT
       Server:
       - lighttpd/1.4.54
     body:
@@ -74,7 +74,7 @@ http_interactions:
           <h1>500 Internal Server Error</h1>
          </body>
         </html>
-  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+  recorded_at: Sun, 08 Dec 2024 10:13:16 GMT
 - request:
     method: post
     uri: https://<SMA_API_HOST>/dyn/login.json
@@ -100,16 +100,16 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Tue, 13 Dec 2022 18:31:52 GMT
+      - Sun, 08 Dec 2024 10:13:17 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"OjZqG36-P6l--06X"}}'
-  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+      string: '{"result":{"sid":"_QTBIiViI0Ni4j13"}}'
+  recorded_at: Sun, 08 Dec 2024 10:13:16 GMT
 - request:
     method: get
-    uri: https://<SMA_API_HOST>/fs/none_existent?sid=OjZqG36-P6l--06X
+    uri: https://<SMA_API_HOST>/fs/none_existent?sid=_QTBIiViI0Ni4j13
     body:
       encoding: US-ASCII
       string: ''
@@ -132,7 +132,7 @@ http_interactions:
       Content-Length:
       - '365'
       Date:
-      - Tue, 13 Dec 2022 18:31:52 GMT
+      - Sun, 08 Dec 2024 10:13:17 GMT
       Server:
       - lighttpd/1.4.54
     body:
@@ -149,10 +149,10 @@ http_interactions:
           <h1>500 Internal Server Error</h1>
          </body>
         </html>
-  recorded_at: Tue, 13 Dec 2022 18:31:51 GMT
+  recorded_at: Sun, 08 Dec 2024 10:13:17 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=OjZqG36-P6l--06X
+    uri: https://<SMA_API_HOST>/dyn/logout.json?sid=_QTBIiViI0Ni4j13
     body:
       encoding: UTF-8
       string: "{}"
@@ -175,11 +175,11 @@ http_interactions:
       Content-Length:
       - '28'
       Date:
-      - Tue, 13 Dec 2022 18:31:53 GMT
+      - Sun, 08 Dec 2024 10:13:17 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
       string: '{"result":{"isLogin":false}}'
-  recorded_at: Tue, 13 Dec 2022 18:31:52 GMT
-recorded_with: VCR 6.1.0
+  recorded_at: Sun, 08 Dec 2024 10:13:17 GMT
+recorded_with: VCR 6.3.1

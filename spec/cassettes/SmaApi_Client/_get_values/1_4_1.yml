@@ -25,16 +25,16 @@ http_interactions:
       Content-Length:
       - '37'
       Date:
-      - Tue, 28 May 2024 16:57:29 GMT
+      - Sun, 08 Dec 2024 09:39:01 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"ihVajSgthW_t6Sw9"}}'
-  recorded_at: Tue, 28 May 2024 16:57:29 GMT
+      string: '{"result":{"sid":"K9mXB2yaaRtaC0y1"}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:00 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=ihVajSgthW_t6Sw9
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=K9mXB2yaaRtaC0y1
     body:
       encoding: UTF-8
       string: '{"destDev":[],"keys":["6100_40263F00","6400_00260100","6380_40251E00_1"]}'
@@ -55,13 +55,13 @@ http_interactions:
       Cache-Control:
       - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
-      - '155'
+      - '154'
       Date:
-      - Tue, 28 May 2024 16:57:29 GMT
+      - Sun, 08 Dec 2024 09:39:01 GMT
       Server:
       - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":354}]},"6400_00260100":{"1":[{"val":11505903}]},"6380_40251E00":{"1":[{"val":163},{"val":245}]}}}}'
-  recorded_at: Tue, 28 May 2024 16:57:30 GMT
-recorded_with: VCR 6.1.0
+      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":232}]},"6400_00260100":{"1":[{"val":12992158}]},"6380_40251E00":{"1":[{"val":227},{"val":70}]}}}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:01 GMT
+recorded_with: VCR 6.3.1

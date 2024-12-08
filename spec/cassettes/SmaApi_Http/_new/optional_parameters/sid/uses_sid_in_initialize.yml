@@ -21,21 +21,20 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
       - '37'
       Date:
-      - Tue, 19 May 2020 19:09:46 GMT
+      - Sun, 08 Dec 2024 09:39:01 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"sid":"MJ2UBKhiYW0ikKxR"}}'
-    http_version: null
-  recorded_at: Tue, 19 May 2020 19:09:47 GMT
+      string: '{"result":{"sid":"KVPxF1CvBDRvV3iE"}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:01 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=MJ2UBKhiYW0ikKxR
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=KVPxF1CvBDRvV3iE
     body:
       encoding: UTF-8
       string: '{"destDev":[],"keys":["6100_40263F00"]}'
@@ -54,21 +53,20 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
-      - '64'
+      - '66'
       Date:
-      - Tue, 19 May 2020 19:09:46 GMT
+      - Sun, 08 Dec 2024 09:39:02 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"0199-B32F8CCE":{"6100_40263F00":{"1":[{"val":0}]}}}}'
-    http_version: null
-  recorded_at: Tue, 19 May 2020 19:09:47 GMT
+      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":230}]}}}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:01 GMT
 - request:
     method: post
-    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=MJ2UBKhiYW0ikKxR
+    uri: https://<SMA_API_HOST>/dyn/getValues.json?sid=KVPxF1CvBDRvV3iE
     body:
       encoding: UTF-8
       string: '{"destDev":[],"keys":["6100_40263F00"]}'
@@ -87,16 +85,15 @@ http_interactions:
       Content-Type:
       - application/json;
       Cache-Control:
-      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0
       Content-Length:
-      - '64'
+      - '66'
       Date:
-      - Tue, 19 May 2020 19:09:46 GMT
+      - Sun, 08 Dec 2024 09:39:02 GMT
       Server:
-      - lighttpd/1.4.48
+      - lighttpd/1.4.54
     body:
       encoding: UTF-8
-      string: '{"result":{"0199-B32F8CCE":{"6100_40263F00":{"1":[{"val":0}]}}}}'
-    http_version: null
-  recorded_at: Tue, 19 May 2020 19:09:47 GMT
-recorded_with: VCR 5.1.0
+      string: '{"result":{"0199-xxxxxCCE":{"6100_40263F00":{"1":[{"val":230}]}}}}'
+  recorded_at: Sun, 08 Dec 2024 09:39:01 GMT
+recorded_with: VCR 6.3.1
